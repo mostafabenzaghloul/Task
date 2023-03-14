@@ -1,0 +1,111 @@
+﻿@using System.Data
+@using System.Linq
+@model DataSet
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+            table th {
+                background-color: #B8DBFD;
+                color: #333;
+                font-weight: bold;
+            }
+
+            table th, table td {
+                padding: 5px;
+                border: 1px solid #ccc;
+            }
+
+            table, table table td {
+                border: 0px solid #ccc;
+            }
+       
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input id="fil" type="file" name="postedFile" />
+        <input id="subm"
+               type="submit" value="Import" />
+    }
+    <hr />
+    @if (Model != null)
+    {
+        WebGrid webGrid = new WebGrid(source: (from p in Model.Tables[0].AsEnumerable()
+                                               select new
+                                               {
+                                                   DocumentID = p.Field<object>("Id").ToString(),
+                                                   DocumentDate = p.Field<object>("DocumentDate").ToString(),
+                                                   DocumentType = p.Field<object>("DocumentType").ToString(),
+                                                   CustomerId = p.Field<object>("CustomerId").ToString(),
+
+                                                   CustomerName = p.Field<object>("CustomerName").ToString(),
+                                                   CustomerType = p.Field<object>("CustomerType").ToString(),
+                                                   CustomerCountryCode = p.Field<object>("CustomerGovernate").ToString(),
+                                                   CustomerCity = p.Field<object>("CustomerCity").ToString()
+                                                   ,
+                                                   CustomerStreet = p.Field<object>("CustomerStreet").ToString(),
+                                                   CustomerBuildingNumber = p.Field<object>("CustomerBuildingNumber").ToString(),
+                                                   ProductCode = p.Field<object>("ProductCode").ToString()
+                                                   ,
+                                                   ProductDescription = p.Field<object>("ProductDescription").ToString(),
+
+                                                   ProductUnit = p.Field<object>("ProductUnit").ToString(),
+
+                                                   ProductQuantity = p.Field<object>("ProductQuantity").ToString(),
+
+                                                   ProductUnitPrice = p.Field<object>("ProductUnitPrice").ToString(),
+
+                                                   ProductDiscountAmount = p.Field<object>("ProductDiscountAmount").ToString(),
+
+                                                   ProductTaxTypeCode = p.Field<object>("ProductTaxTypeCode").ToString(),
+
+                                                   ProductTaxSubTypeCode = p.Field<object>("ProductTaxSubTypeCode").ToString(),
+
+                                                   ProductTaxRatio = p.Field<object>("ProductTaxRatio").ToString(),
+
+                                                   
+                                               }), canSort: false, canPage: false);
+        @webGrid.GetHtml(
+        htmlAttributes: new { @id = "WebGrid" },
+        columns: webGrid.Columns(
+                webGrid.Column("DocumentID", "DocumentID"),
+                webGrid.Column("DocumentDate", "DocumentDate"),
+                 webGrid.Column("CustomerId", "CustomerId"),
+                  webGrid.Column("CustomerName", "CustomerName"),
+                   webGrid.Column("CustomerType", "CustomerType"),
+                    webGrid.Column("CustomerGovernate", "CustomerGovernate"),
+                     webGrid.Column("CustomerCity", "CustomerCity"),
+                      webGrid.Column("CustomerStreet", "CustomerStreet"),
+                       webGrid.Column("CustomerBuildingNumber", "CustomerBuildingNumber"),
+                        webGrid.Column("ProductCode", "ProductCode"),
+                         webGrid.Column("ProductDescription", "ProductDescription"),
+                          webGrid.Column("ProductUnit", "ProductUnit"),
+                           webGrid.Column("ProductQuantity", "ProductQuantity"),
+                            webGrid.Column("ProductUnitPrice", "ProductUnitPrice"),
+                             webGrid.Column("ProductDiscountAmount", "ProductDiscountAmount"),
+                              webGrid.Column("ProductTaxTypeCode", "ProductTaxTypeCode"),
+                               webGrid.Column("ProductTaxSubTypeCode", "ProductTaxSubTypeCode"),
+                                webGrid.Column("ProductTaxRatio", "ProductTaxRatio"),
+                webGrid.Column("DocumentType", "DocumentType")));
+    }
+</body>
+</html>
