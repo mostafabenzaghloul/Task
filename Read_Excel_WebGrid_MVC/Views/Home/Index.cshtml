@@ -82,30 +82,178 @@
 
                                                    ProductTaxRatio = p.Field<object>("ProductTaxRatio").ToString(),
 
-                                                   
-                                               }), canSort: false, canPage: false);
-        @webGrid.GetHtml(
-        htmlAttributes: new { @id = "WebGrid" },
-        columns: webGrid.Columns(
-                webGrid.Column("DocumentID", "DocumentID"),
-                webGrid.Column("DocumentDate", "DocumentDate"),
-                 webGrid.Column("CustomerId", "CustomerId"),
-                  webGrid.Column("CustomerName", "CustomerName"),
-                   webGrid.Column("CustomerType", "CustomerType"),
-                    webGrid.Column("CustomerGovernate", "CustomerGovernate"),
-                     webGrid.Column("CustomerCity", "CustomerCity"),
-                      webGrid.Column("CustomerStreet", "CustomerStreet"),
-                       webGrid.Column("CustomerBuildingNumber", "CustomerBuildingNumber"),
-                        webGrid.Column("ProductCode", "ProductCode"),
-                         webGrid.Column("ProductDescription", "ProductDescription"),
-                          webGrid.Column("ProductUnit", "ProductUnit"),
-                           webGrid.Column("ProductQuantity", "ProductQuantity"),
-                            webGrid.Column("ProductUnitPrice", "ProductUnitPrice"),
-                             webGrid.Column("ProductDiscountAmount", "ProductDiscountAmount"),
-                              webGrid.Column("ProductTaxTypeCode", "ProductTaxTypeCode"),
-                               webGrid.Column("ProductTaxSubTypeCode", "ProductTaxSubTypeCode"),
-                                webGrid.Column("ProductTaxRatio", "ProductTaxRatio"),
-                webGrid.Column("DocumentType", "DocumentType")));
-    }
+
+                                               }).ToList(), canSort: false, canPage: false);
+        @if (webGrid.Column("DocumentID") == null || webGrid.Column("CustomerId") == null)
+        {
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-lg-6 mb-2">
+                    <div class="toast show fade"
+                         role="alert"
+                         aria-live="assertive"
+                         aria-atomic="true"
+                         data-mdb-color="info"
+                         data-mdb-autohide="false">
+                        <div class="toast-header">
+                            <i class="fas fa-info-circle fa-lg me-2"></i>
+                            <strong class="me-auto">MDBootstrap</strong>
+                            <small>11 mins ago</small>
+                            <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">Hello, world! This is a toast message.</div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-6 mb-2">
+                    <div class="toast show fade"
+                         role="alert"
+                         aria-live="assertive"
+                         aria-atomic="true"
+                         data-mdb-color="warning"
+                         data-mdb-autohide="false">
+                        <div class="toast-header">
+                            <i class="fas fa-exclamation-triangle fa-lg me-2"></i>
+                            <strong class="me-auto">MDBootstrap</strong>
+                            <small>11 mins ago</small>
+                            <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">Hello, world! This is a toast message.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2 justify-content-center">
+                <div class="col-xl-5 col-lg-6 mb-2">
+                    <div class="toast show fade"
+                         role="alert"
+                         aria-live="assertive"
+                         aria-atomic="true"
+                         data-mdb-color="success"
+                         data-mdb-autohide="false">
+                        <div class="toast-header">
+                            <i class="fas fa-check fa-lg me-2"></i>
+                            <strong class="me-auto">MDBootstrap</strong>
+                            <small>11 mins ago</small>
+                            <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">Hello, world! This is a toast message.</div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-6 mb-2">
+                    <div class="toast show fade"
+                         role="alert"
+                         aria-live="assertive"
+                         aria-atomic="true"
+                         data-mdb-color="danger"
+                         data-mdb-autohide="false">
+                        <div class="toast-header">
+                            <i class="fas fa-exclamation-circle fa-lg me-2"></i>
+                            <strong class="me-auto">MDBootstrap</strong>
+                            <small>11 mins ago</small>
+                            <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">Document  id Valid.</div>
+                    </div>
+                </div>
+            </div>
+        }
+        @else if((webGrid.Column("DocumentID") !== "T1" || "T2" || "T3" || "T4") || ((webGrid.Column("ProductTaxSubTypeCode") !== "V001" || "V002" || "V003" || "V004"))
+{
+<div class="row justify-content-center">
+    <div class="col-xl-5 col-lg-6 mb-2">
+        <div class="toast show fade"
+             role="alert"
+             aria-live="assertive"
+             aria-atomic="true"
+             data-mdb-color="info"
+             data-mdb-autohide="false">
+            <div class="toast-header">
+                <i class="fas fa-info-circle fa-lg me-2"></i>
+                <strong class="me-auto">MDBootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">Hello, world! This is a toast message.</div>
+        </div>
+    </div>
+    <div class="col-xl-5 col-lg-6 mb-2">
+        <div class="toast show fade"
+             role="alert"
+             aria-live="assertive"
+             aria-atomic="true"
+             data-mdb-color="warning"
+             data-mdb-autohide="false">
+            <div class="toast-header">
+                <i class="fas fa-exclamation-triangle fa-lg me-2"></i>
+                <strong class="me-auto">MDBootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">Hello, world! This is a toast message.</div>
+        </div>
+    </div>
+</div>
+<div class="row mb-2 justify-content-center">
+    <div class="col-xl-5 col-lg-6 mb-2">
+        <div class="toast show fade"
+             role="alert"
+             aria-live="assertive"
+             aria-atomic="true"
+             data-mdb-color="success"
+             data-mdb-autohide="false">
+            <div class="toast-header">
+                <i class="fas fa-check fa-lg me-2"></i>
+                <strong class="me-auto">MDBootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">Hello, world! This is a toast message.</div>
+        </div>
+    </div>
+    <div class="col-xl-5 col-lg-6 mb-2">
+        <div class="toast show fade"
+             role="alert"
+             aria-live="assertive"
+             aria-atomic="true"
+             data-mdb-color="danger"
+             data-mdb-autohide="false">
+            <div class="toast-header">
+                <i class="fas fa-exclamation-circle fa-lg me-2"></i>
+                <strong class="me-auto">MDBootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Please provide valid customer type and valid customer  product quantity
+                .
+            </div>
+        </div>
+    </div>
+</div>
+}
+else
+{
+@webGrid.GetHtml(
+htmlAttributes: new { @id = "WebGrid" },
+columns: webGrid.Columns(
+        webGrid.Column("DocumentID", "DocumentID"),
+        webGrid.Column("DocumentDate", "DocumentDate"),
+         webGrid.Column("CustomerId", "CustomerId"),
+          webGrid.Column("CustomerName", "CustomerName"),
+           webGrid.Column("CustomerType", "CustomerType"),
+            webGrid.Column("CustomerGovernate", "CustomerGovernate"),
+             webGrid.Column("CustomerCity", "CustomerCity"),
+              webGrid.Column("CustomerStreet", "CustomerStreet"),
+               webGrid.Column("CustomerBuildingNumber", "CustomerBuildingNumber"),
+                webGrid.Column("ProductCode", "ProductCode"),
+                 webGrid.Column("ProductDescription", "ProductDescription"),
+                  webGrid.Column("ProductUnit", "ProductUnit"),
+                   webGrid.Column("ProductQuantity", "ProductQuantity"),
+                    webGrid.Column("ProductUnitPrice", "ProductUnitPrice"),
+                     webGrid.Column("ProductDiscountAmount", "ProductDiscountAmount"),
+                      webGrid.Column("ProductTaxTypeCode", "ProductTaxTypeCode"),
+                       webGrid.Column("ProductTaxSubTypeCode", "ProductTaxSubTypeCode"),
+                        webGrid.Column("ProductTaxRatio", "ProductTaxRatio"),
+        webGrid.Column("DocumentType", "DocumentType")));
+}
+}
 </body>
 </html>
